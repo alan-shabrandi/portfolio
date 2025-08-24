@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import ProjectsCard from "./ProjectsCard";
-import ProjectModal from "./ProjectModal";
 import Title from "../title/Title";
 import type { Project } from "../../utils/types";
 import { projects } from "../../constants";
@@ -17,16 +16,10 @@ const cardVariants: Variants = {
 };
 
 const Projects: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const openModal = (project: Project) => {
-    setSelectedProject(project);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
+  const handleCardClick = (project: Project) => {
+    navigate(`/projects/${project.id}`); // فقط id را می‌فرستیم
   };
 
   return (
@@ -43,13 +36,11 @@ const Projects: React.FC = () => {
         variants={containerVariants}
       >
         {projects.map((project) => (
-          <motion.div key={project.id} variants={cardVariants} onClick={() => openModal(project)}>
-            <ProjectsCard title={project.title} shortDes={project.shortDes} image={project.images[0]} onClick={() => setSelectedProject(project)} />
+          <motion.div key={project.id} variants={cardVariants} onClick={() => handleCardClick(project)}>
+            <ProjectsCard title={project.title} shortDes={project.shortDes} image={project.images[0]} />
           </motion.div>
         ))}
       </motion.div>
-
-      {selectedProject && <ProjectModal project={selectedProject} isOpen={modalOpen} onClose={closeModal} />}
     </section>
   );
 };

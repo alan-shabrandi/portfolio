@@ -1,26 +1,16 @@
-import Contact from "./components/contact/Contact";
-import Education from "./components/education/Education";
-import Experiences from "./components/experiences/Experiences";
-import Features from "./components/features/Features";
-import HeroSection from "./components/heroSection/HeroSection";
-import Navbar from "./components/navbar/Navbar";
-import Projects from "./components/projects/Projects";
-import Skills from "./components/skills/Skills";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Layout from "./layout/Layout";
+import ProjectDetail from "./components/projects/ProjectDetail";
 
 const App = () => {
   return (
-    <div className="w-full h-auto bg-bodyColor text-lightText px-4">
-      <Navbar />
-      <div className="max-w-screen-xl mx-auto">
-        <HeroSection />
-        <Features />
-        <Projects />
-        <Experiences />
-        <Skills />
-        <Education />
-        <Contact />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
+      </Route>
+    </Routes>
   );
 };
 

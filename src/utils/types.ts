@@ -20,6 +20,8 @@ export type Project = {
   shortDes: string;
   description: string;
   images: string[];
+  videos?: string[];
+  videoPosters?: string[];
   techStack: string[];
   githubLink?: string;
   liveLink?: string;

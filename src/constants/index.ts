@@ -15,7 +15,7 @@ import {
   FaNodeJs,
 } from "react-icons/fa";
 import { SiProgress, SiJavascript, SiNextdotjs, SiNestjs, SiMongodb } from "react-icons/si";
-import { projectOne, projectThree, projectTwo } from "../assets";
+import { image1Project1, image2Project1, projectOne, projectThree, projectTwo } from "../assets";
 
 export const navLinksdata: NavLink[] = [
   { _id: "1001", title: "Home", link: "home", icon: FaHome },
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     shortDes: "Clone of popular social media with auth & realtime updates.",
     description:
       "A full-featured social media platform with user authentication, post creation, likes, comments, and real-time notifications. Built for performance and scalability.",
-    images: [projectOne, projectTwo],
+    images: [image1Project1, image2Project1],
     techStack: ["React", "TypeScript", "Firebase", "Tailwind CSS"],
     githubLink: "#",
     liveLink: "#",
