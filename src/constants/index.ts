@@ -1,40 +1,29 @@
 import type { Education, Feature, NavLink, Project } from "../utils/types";
 import { AiFillAppstore } from "react-icons/ai";
-import { FaDatabase, FaServer } from "react-icons/fa";
-import { SiProgress, SiJavascript } from "react-icons/si";
+import {
+  FaDatabase,
+  FaServer,
+  FaHome,
+  FaStar,
+  FaProjectDiagram,
+  FaTools,
+  FaGraduationCap,
+  FaEnvelope,
+  FaLinkedinIn,
+  FaTelegram,
+  FaReact,
+  FaNodeJs,
+} from "react-icons/fa";
+import { SiProgress, SiJavascript, SiNextdotjs, SiNestjs, SiMongodb } from "react-icons/si";
 import { projectOne, projectThree, projectTwo } from "../assets";
 
 export const navLinksdata: NavLink[] = [
-  {
-    _id: "1001",
-    title: "Home",
-    link: "home",
-  },
-  {
-    _id: "1002",
-    title: "Features",
-    link: "features",
-  },
-  {
-    _id: "1003",
-    title: "Projects",
-    link: "projects",
-  },
-  {
-    _id: "1004",
-    title: "Resume",
-    link: "resume",
-  },
-  {
-    _id: "1005",
-    title: "Testimonial",
-    link: "testimonial",
-  },
-  {
-    _id: "1006",
-    title: "Contact",
-    link: "contact",
-  },
+  { _id: "1001", title: "Home", link: "home", icon: FaHome },
+  { _id: "1002", title: "Features", link: "features", icon: FaStar },
+  { _id: "1003", title: "Projects", link: "projects", icon: FaProjectDiagram },
+  { _id: "1004", title: "Skills", link: "skills", icon: FaTools },
+  { _id: "1005", title: "Education", link: "education", icon: FaGraduationCap },
+  { _id: "1006", title: "Contact", link: "contact", icon: FaEnvelope },
 ];
 
 export const featuresData: Feature[] = [
@@ -128,4 +117,17 @@ export const educationData: Education[] = [
     location: "California, USA",
     description: "Specialized in full-stack development and scalable web applications.",
   },
+];
+
+export const findMeIn = [
+  { title: "LinkedIn", icon: FaLinkedinIn },
+  { title: "Telegram", icon: FaTelegram },
+];
+
+export const bestSkills = [
+  { title: "React", icon: FaReact },
+  { title: "Next.js", icon: SiNextdotjs },
+  { title: "Node.js", icon: FaNodeJs },
+  { title: "NestJS", icon: SiNestjs },
+  { title: "MongoDB", icon: SiMongodb },
 ];

@@ -1,9 +1,10 @@
 import { motion, type Variants } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaReact } from "react-icons/fa";
-import { SiTailwindcss, SiFigma, SiNextdotjs } from "react-icons/si";
 import { banner } from "../../assets";
 import { createElement } from "react";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+import { bestSkills, findMeIn } from "../../constants";
 
 // ---------- Types ----------
 interface LeftBannerProps {
@@ -17,12 +18,7 @@ interface RightBannerProps {
 }
 
 // ---------- Data ----------
-const words = ["Professional Coder.", "Full Stack Developer.", "UI Designer."];
-
-const mediaSections = [
-  { title: "Find me in", icons: [<FaFacebookF />, <FaTwitter />, <FaLinkedinIn />] },
-  { title: "BEST SKILL ON", icons: [<FaReact />, <SiNextdotjs />, <SiTailwindcss />, <SiFigma />] },
-];
+const words = ["Senior Full Stack JavaScript Developer.", "React & Node.js Specialist.", "Tech Enthusiast & Problem Solver."];
 
 // ---------- Variants ----------
 const fadeSlideUp: Variants = {
@@ -55,8 +51,8 @@ const Animated: React.FC<{ children: React.ReactNode; custom?: number }> = ({ ch
 
 // ---------- LeftBanner ----------
 const LeftBanner: React.FC<LeftBannerProps> = ({
-  name = "John Doe",
-  description = "I use animation as a third dimension by which to simplify experiences and guiding through each and every interaction. I'm not adding motion just to spruce things up, but doing it in ways that.",
+  name = "Alan Shabrandi",
+  description = "As a Senior Full Stack JavaScript Developer, I craft high-performance web applications using React, Node.js, and TypeScript. I focus on clean code, scalable architectures, and delivering seamless user experiences.",
 }) => {
   const content = [
     { type: "h4", text: "WELCOME TO MY WORLD", delay: 0 },
@@ -72,12 +68,20 @@ const LeftBanner: React.FC<LeftBannerProps> = ({
     {
       type: "h2",
       text: (
-        <>
+        <span className="text-2xl sm:text-2xl lgl:text-3xl font-bold text-white flex items-center">
           a{" "}
           <span className="ml-2">
-            <Typewriter options={{ strings: words, autoStart: true, loop: true, delay: 50, deleteSpeed: 20 }} />
+            <Typewriter
+              options={{
+                strings: words,
+                autoStart: true,
+                loop: true,
+                delay: 50,
+                deleteSpeed: 20,
+              }}
+            />
           </span>
-        </>
+        </span>
       ),
       delay: 0.2,
     },
@@ -121,25 +125,52 @@ const RightBanner: React.FC<RightBannerProps> = ({ src = banner, alt = "banner i
 
 // ---------- Media ----------
 const Media: React.FC = () => (
-  <motion.div
-    className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between"
-    initial="hidden"
-    animate="visible"
-    variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-  >
-    {mediaSections.map((section, idx) => (
-      <motion.div key={idx} className="flex flex-col gap-4">
-        <h2 className="text-base uppercase font-titleFont mb-4">{section.title}</h2>
-        <motion.div className="flex gap-4" variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}>
-          {section.icons.map((Icon, i) => (
-            <motion.span key={i} className="bannerIcon" variants={iconVariants} whileHover="hover">
-              {Icon}
-            </motion.span>
-          ))}
-        </motion.div>
-      </motion.div>
-    ))}
-  </motion.div>
+  <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
+    {/* Find me in */}
+    <div className="flex flex-col gap-4">
+      <h2 className="text-base uppercase font-titleFont">Find me in</h2>
+      <div className="flex gap-4">
+        {findMeIn.map((item, i) => (
+          <motion.span
+            key={i}
+            className="bannerIcon"
+            variants={iconVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
+            data-tooltip-id="shared-tooltip"
+            data-tooltip-content={item.title}
+          >
+            <item.icon />
+          </motion.span>
+        ))}
+      </div>
+    </div>
+
+    {/* Best Skills */}
+    <div className="flex flex-col gap-4">
+      <h2 className="text-base uppercase font-titleFont">BEST SKILL ON</h2>
+      <div className="flex gap-4">
+        {bestSkills.map((item, i) => (
+          <motion.span
+            key={i}
+            className="bannerIcon"
+            variants={iconVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
+            data-tooltip-id="shared-tooltip"
+            data-tooltip-content={item.title}
+          >
+            <item.icon />
+          </motion.span>
+        ))}
+      </div>
+    </div>
+
+    {/* Tooltip Shared */}
+    <Tooltip id="shared-tooltip" place="top" className="!bg-designColor !text-white !px-3 !py-1 !rounded-md !text-sm" />
+  </div>
 );
 
 // ---------- Helper ----------
@@ -158,7 +189,7 @@ function getClassName(type: string) {
   }
 }
 
-// ---------- Combined Banner ----------
+// ---------- Combined HeroSection ----------
 const HeroSection: React.FC = () => (
   <div className="flex flex-col lgl:flex-row w-full h-full items-center justify-between px-4 lgl:px-0 gap-10 lgl:gap-0 lgl:py-6">
     <LeftBanner />

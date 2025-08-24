@@ -84,7 +84,7 @@ const Skills: React.FC = () => {
                 key={index}
                 className="flex flex-col items-center gap-4 bg-black bg-opacity-20 rounded-lg p-6 shadow-shadowOne cursor-pointer"
                 variants={skillVariants}
-                whileHover={isDesktop ? { scale: 1.15, rotate: 5, boxShadow: "0px 0px 25px #ff014f" } : {}}
+                whileHover={isDesktop ? { scale: 1.15, rotate: 5, boxShadow: "0px 0px 25px var(--color-designColor)" } : {}}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <div className="text-5xl text-designColor">{skill.icon}</div>

@@ -4,6 +4,7 @@ export type NavLink = {
   _id: string;
   title: string;
   link: string;
+  icon?: IconType;
 };
 
 export type Feature = {

@@ -7,6 +7,7 @@ import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { logo } from "../../assets";
 import { navLinksdata } from "../../constants";
 import type { NavLink } from "../../utils/types";
+import type { IconType } from "react-icons";
 
 // Generic motion variants
 const fadeSlide = (axis: "x" | "y" = "x", distance = 20, delay = 0): Variants => ({
@@ -24,12 +25,19 @@ const staggerContainer: Variants = {
 };
 
 // Single NavLink component
-const NavLinkItem: React.FC<{ title: string; link: string; onClick?: () => void; custom?: number }> = ({ title, link, onClick, custom = 0 }) => (
+const NavLinkItem: React.FC<{ title: string; link: string; icon?: IconType; onClick?: () => void; custom?: number }> = ({
+  title,
+  link,
+  icon: Icon,
+  onClick,
+  custom = 0,
+}) => (
   <motion.li
-    className="text-base font-normal text-gray-400 tracking-wide cursor-pointer"
+    className="flex items-center gap-2 text-base font-normal text-gray-400 tracking-wide cursor-pointer"
     variants={fadeSlide("x", 20, custom * 0.1)}
-    whileHover={{ scale: 1.05, color: "#ff014f" }}
+    whileHover={{ scale: 1.05, color: "var(--color-designColor)" }}
   >
+    {Icon && <Icon className="text-designColor" />}
     <Link to={link} spy smooth offset={-70} duration={500} onClick={onClick}>
       {title}
     </Link>
@@ -59,14 +67,11 @@ const Navbar: React.FC = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="w-full h-24 sticky top-0 z-50 bg-bodyColor flex justify-between items-center font-titleFont border-b border-b-gray-600 px-4">
-      {/* Logo */}
-      <img src={logo} alt="logo" className="h-10" />
-
+    <header className="w-full h-18 sticky top-0 z-50 bg-bodyColor flex justify-between items-center font-titleFont border-b border-b-gray-600 px-4">
       {/* Desktop Menu */}
-      <nav className="hidden mdl:inline-flex items-center gap-6 lg:gap-10">
+      <nav className="hidden mdl:flex justify-center items-center gap-6 lg:gap-10 w-full">
         {navLinksdata.map((link: NavLink, i) => (
-          <NavLinkItem key={link._id} title={link.title} link={link.link} />
+          <NavLinkItem key={link._id} title={link.title} link={link.link} icon={link.icon} onClick={closeMenu} custom={i} />
         ))}
       </nav>
 
