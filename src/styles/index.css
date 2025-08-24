@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+@layer components {
+  .bannerIcon {
+    @apply w-16 h-16 bg-black/25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-black/40 hover:-translate-y-1 transition-all hover:text-designColor cursor-pointer duration-300;
+  }
+
+  .resumeLi {
+    @apply w-full h-20 bg-black/25 text-xl text-gray-300 flex justify-center cursor-pointer hover:bg-black/40 duration-300 items-center border rounded-none;
+  }
+
+  .bgOpacity {
+    @apply bg-black/40;
+  }
+
+  .contactInput {
+    @apply w-full h-12 rounded-lg border-b border-b-gray-600 bg-[#191b1e] text-lightText px-4 outline-none focus-visible:outline-designColor focus-visible:border-b-transparent duration-300;
+  }
+
+  .contactTextArea {
+    @apply w-full rounded-lg border-b border-b-gray-600 bg-[#191b1e] text-lightText px-4 py-2 outline-none focus-visible:outline-designColor focus-visible:border-b-transparent duration-300 resize-none;
+  }
+}
+
+@theme {
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 375px;
+  --breakpoint-sml: 500px;
+  --breakpoint-md: 667px;
+  --breakpoint-mdl: 768px;
+  --breakpoint-lg: 960px;
+  --breakpoint-lgl: 1024px;
+  --breakpoint-xl: 1280px;
+
+  --color-bodyColor: #212428;
+  --color-lightText: #c4cfde;
+  --color-designColor: #ff014f;
+
+  --font-bodyFont: Poppins, sans-serif;
+  --font-titleFont: Montserrat, sans-serif;
+
+  --shadow-shadowOne: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+
+  --background-boxBg: linear-gradient(145deg, #1e2024, #23272b);
+}
+
+.active {
+  color: white;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
