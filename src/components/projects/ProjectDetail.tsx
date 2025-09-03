@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../../constants";
 import type { Project } from "../../utils/types";
-import { FaPlay, FaExpand } from "react-icons/fa";
+import { FaPlay, FaExpand, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Mousewheel, Navigation, Pagination, Zoom } from "swiper/modules";
 
@@ -36,7 +36,7 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, mediaList, initialIndex
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm"
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -51,7 +51,7 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, mediaList, initialIndex
             exit="hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="absolute top-4 right-4 text-white text-3xl z-50 cursor-pointer" onClick={onClose}>
+            <button className="absolute top-4 right-4 text-gray-300 hover:text-white text-3xl z-50 cursor-pointer" onClick={onClose}>
               &times;
             </button>
 
@@ -94,7 +94,7 @@ const ProjectDetail: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [initialIndex, setInitialIndex] = useState(0);
 
-  if (!project) return <p className="p-8">Project not found!</p>;
+  if (!project) return <p className="p-8 text-gray-300">Project not found!</p>;
 
   const mediaList: MediaItem[] = [
     ...project.images.map((src) => ({ src, type: "image" as const })),
@@ -109,36 +109,96 @@ const ProjectDetail: React.FC = () => {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold">{project.title}</h1>
-      <p className="mt-4">{project.shortDes}</p>
-
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        {mediaList.map((media, index) => (
-          <div key={`media-${index}`} className="relative rounded-md overflow-hidden cursor-pointer group" onClick={() => openModal(index)}>
-            {media.type === "image" ? (
-              <img
-                src={media.src}
-                alt={`media-${index}`}
-                className="w-full rounded-md transition-transform duration-300 group-hover:scale-105 group-hover:blur-sm"
-              />
-            ) : (
-              <video className="w-full rounded-md transition-transform duration-300 group-hover:blur-sm">
-                <source src={media.src} type="video/mp4" />
-              </video>
-            )}
-
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              {media.type === "image" ? (
-                <FaExpand className="text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              ) : (
-                <FaPlay className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              )}
-            </div>
-          </div>
-        ))}
+    <div className="p-8 max-w-7xl mx-auto space-y-8 text-gray-200">
+      {/* Title & Description */}
+      <div>
+        <h1 className="text-3xl font-bold text-white">{project.title}</h1>
+        <p className="mt-2 text-gray-400">{project.shortDes}</p>
+        <p className="mt-4 text-gray-300">{project.description}</p>
       </div>
 
+      {/* Role & Company */}
+      {(project.role || project.company) && (
+        <div className="flex flex-wrap gap-4 text-sm text-gray-300">
+          {project.role && <span className="px-3 py-1 rounded-full bg-gray-800 font-medium">Role: {project.role}</span>}
+          {project.company && <span className="px-3 py-1 rounded-full bg-gray-800 font-medium">Company: {project.company}</span>}
+        </div>
+      )}
+
+      {/* Features */}
+      {project.features && (
+        <div>
+          <h2 className="text-xl font-semibold mb-2 text-white">Key Features</h2>
+          <ul className="list-disc list-inside space-y-1 text-gray-300">
+            {project.features.map((feature, index) => (
+              <li key={`feature-${index}`}>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Technical Highlights */}
+      {project.technicalHighlights && (
+        <div>
+          <h2 className="text-xl font-semibold mb-2 text-white">Technical Highlights</h2>
+          <ul className="list-disc list-inside space-y-1 text-gray-300">
+            {project.technicalHighlights.map((highlight, index) => (
+              <li key={`highlight-${index}`}>{highlight}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Tech Stack */}
+      {project.techStack && (
+        <div>
+          <h2 className="text-xl font-semibold mb-2 text-white">Tech Stack</h2>
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.map((tech, index) => (
+              <span key={`tech-${index}`} className="px-3 py-1 rounded-full bg-blue-900 text-blue-200 text-sm font-medium">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Demo Links */}
+      {project.demoLinks && (
+        <div>
+          <h2 className="text-xl font-semibold mb-2 text-white">Demo Links</h2>
+          <ul className="space-y-2">
+            {project.demoLinks.map((link, index) => (
+              <li key={`demo-${index}`}>
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-blue-400 hover:text-blue-300 hover:underline"
+                >
+                  <FaExternalLinkAlt className="shrink-0" /> {link}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* GitHub / Live */}
+      <div className="flex gap-4">
+        {project.githubLink && project.githubLink !== "#" && (
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-gray-200 rounded-lg hover:bg-gray-700"
+          >
+            <FaGithub /> GitHub
+          </a>
+        )}
+      </div>
+
+      {/* Media Modal */}
       <MediaModal isOpen={modalOpen} mediaList={mediaList} initialIndex={initialIndex} onClose={closeModal} />
     </div>
   );

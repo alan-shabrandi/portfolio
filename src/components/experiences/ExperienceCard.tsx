@@ -3,7 +3,8 @@ import { motion, type Variants } from "framer-motion";
 interface ExperienceCardProps {
   title: string;
   subTitle: string;
-  result: string;
+  date: string;
+  location: string;
   des: string;
 }
 
@@ -16,7 +17,7 @@ const cardVariants: Variants = {
   },
 };
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ title, subTitle, result, des }) => {
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ title, subTitle, date, location, des }) => {
   return (
     <motion.div
       className="w-full h-1/3 group flex"
@@ -33,20 +34,17 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ title, subTitle, result
       </div>
 
       {/* Card content */}
-      <div className="w-full bg-black bg-opacity-20 hover:bg-opacity-30 duration-300 rounded-lg p-4 lgl:px-10 flex flex-col justify-center gap-6 lgl:gap-10 shadow-shadowOne">
+      <div className="w-full bg-black bg-opacity-20 hover:bg-opacity-30 duration-300 rounded-lg px-4 py-6 lgl:px-10 flex flex-col justify-center gap-6 lgl:gap-10 shadow-shadowOne">
         {/* Header */}
         <div className="flex flex-col lgl:flex-row justify-between gap-4 lgl:gap-0 lgl:items-center">
           <div>
             <h3 className="text-xl md:text-2xl font-semibold group-hover:text-white duration-300">{title}</h3>
             <p className="text-sm mt-2 text-gray-400 group-hover:text-white duration-300">{subTitle}</p>
+            <p className="text-sm mt-2 text-gray-400 group-hover:text-white duration-300">{location}</p>
           </div>
 
           {/* Result badge */}
-          <div>
-            <p className="px-4 py-2 text-designColor bg-black bg-opacity-25 rounded-lg flex justify-center items-center shadow-shadowOne text-sm font-medium">
-              {result}
-            </p>
-          </div>
+          <p className="text-designColor bg-opacity-25 rounded-lg flex justify-center items-center text-sm font-medium">{date}</p>
         </div>
 
         {/* Description */}

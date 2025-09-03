@@ -22,9 +22,19 @@ export type Project = {
   images: string[];
   videos?: string[];
   videoPosters?: string[];
+
+  // extra meta info
+  role?: string;
+  company?: string;
+
+  // project details
+  features?: string[];
   techStack: string[];
+
+  // links
   githubLink?: string;
-  liveLink?: string;
+  demoLinks?: string[];
+  technicalHighlights: string[];
 };
 
 export type Education = {

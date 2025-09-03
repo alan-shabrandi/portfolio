@@ -15,7 +15,7 @@ import {
   FaNodeJs,
 } from "react-icons/fa";
 import { SiProgress, SiJavascript, SiNextdotjs, SiNestjs, SiMongodb } from "react-icons/si";
-import { image1Project1, image2Project1, projectOne, projectThree, projectTwo } from "../assets";
+import { posterProject1, posterProject2 } from "../assets";
 
 export const navLinksdata: NavLink[] = [
   { _id: "1001", title: "Home", link: "home", icon: FaHome },
@@ -67,36 +67,58 @@ export const featuresData: Feature[] = [
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Social Media Clone",
-    shortDes: "Clone of popular social media with auth & realtime updates.",
+    title: "Video Streaming Platform",
+    shortDes: "A customizable video streaming and sharing platform like YouTube & Aparat.",
     description:
-      "A full-featured social media platform with user authentication, post creation, likes, comments, and real-time notifications. Built for performance and scalability.",
-    images: [image1Project1, image2Project1],
-    techStack: ["React", "TypeScript", "Firebase", "Tailwind CSS"],
-    githubLink: "#",
-    liveLink: "#",
+      "Developed a scalable video streaming platform at Mobin Tadbir Sharif, powering apps like Hamrahi Cloud (MCI), Zarebin, Cinemahamrah, CafeVideo, and Shad. Features include live & VOD streaming, real-time chat, comments, polls, and advanced player options such as markers, mini player, speed & quality control.",
+    features: [
+      "Live & VOD streaming with hls.js",
+      "Multi-language & customizable subtitles",
+      "Mini player, quality & speed control",
+      "Dark/Light mode",
+      "Realtime comments, polls & chat",
+      "Engagement analytics with charts",
+    ],
+    role: "Frontend Developer",
+    company: "Mobin Tadbir Sharif",
+    technicalHighlights: [
+      "Feature-based architecture & clean code",
+      "Optimized performance with React Profiler & memoization",
+      "Real-time features with socket.io",
+      "Reusable npm library with tsup & monorepo",
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Redux", "Socket.io", "hls.js", "Chart.js"],
+    demoLinks: ["https://cinemahamrah.ir", "https://hamrahi.cloud/ngp?type=vod&id=477796&portrait=true&theme=dark", "https://cafevdo.zarebin.ir/"],
+    images: [posterProject1],
   },
   {
     id: 2,
-    title: "E-commerce Website",
-    shortDes: "Modern e-commerce platform with payment integration.",
+    title: "Hamrahi Cloud",
+    shortDes: "A secure and intelligent cloud storage service with fast access and advanced file management.",
     description:
-      "A scalable e-commerce website with product catalog, shopping cart, checkout, payment gateway, and admin dashboard for product management.",
-    images: [projectTwo, projectThree],
-    techStack: ["Next.js", "Node.js", "MongoDB", "Stripe"],
-    githubLink: "#",
-    liveLink: "#",
-  },
-  {
-    id: 3,
-    title: "Chatting App",
-    shortDes: "Real-time chat application with multiple rooms.",
-    description:
-      "A real-time chat application supporting multiple rooms, direct messaging, message history, and push notifications. Optimized for mobile and desktop.",
-    images: [projectThree, projectOne],
-    techStack: ["React", "Socket.IO", "Node.js", "Express"],
-    githubLink: "#",
-    liveLink: "#",
+      "Developed a modern cloud storage platform providing secure, fast, and smart file access anytime. Delivered in both B2B and B2C versions. Features include file sharing, custom download links, detailed reporting, and advanced file management with high-level security and performance optimizations.",
+    features: [
+      "Secure and smart access to files anytime",
+      "File sharing with others",
+      "Custom download links without account requirement",
+      "High security with antivirus scans & multiple authentication methods",
+      "Daily upload/download reports",
+      "High speed file upload & download",
+    ],
+    role: "Frontend Developer",
+    company: "Mobin Tadbir Sharif",
+    technicalHighlights: [
+      "Feature-based architecture & clean code",
+      "Fully responsive design for all devices",
+      "Advanced file manager implementation",
+      "Rendering optimization with React Profiler",
+      "User authentication with SSO & MFA",
+      "Multi-language support in B2B version (Persian, English, Arabic) using i18next",
+      "Performance optimization with useMemo, useCallback, image & font optimization",
+    ],
+    techStack: ["React", "Tailwind CSS", "Redux", "Axios", "i18next"],
+    demoLinks: ["https://abrehamrahi.ir", "https://business.abrehamrahi.ir/"],
+    images: [posterProject2],
   },
 ];
 
