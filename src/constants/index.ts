@@ -176,8 +176,8 @@ export const educationData: Education[] = [
 ];
 
 export const findMeIn = [
-  { title: "LinkedIn", icon: FaLinkedinIn },
-  { title: "Telegram", icon: FaTelegram },
+  { title: "LinkedIn", icon: FaLinkedinIn, link: "#" },
+  { title: "Telegram", icon: FaTelegram, link: "https://t.me/AlanShabrandi" },
 ];
 
 export const bestSkills = [

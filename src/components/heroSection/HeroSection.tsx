@@ -59,7 +59,7 @@ const LeftBanner: React.FC<LeftBannerProps> = ({
 }) => {
   const content = [
     { type: "h4", text: "WELCOME TO MY WORLD", delay: 0 },
-    { type: "h1", text: <span className="text-gradient-animated capitalize">Hi, I'm {name}</span>, delay: 0.1 },
+    { type: "h1", text: <span className="text-gradient-animated capitalize ">Hi, I'm {name}</span>, delay: 0.1 },
     {
       type: "h2",
       text: (
@@ -128,7 +128,7 @@ const Media: React.FC = () => (
       <h2 className="text-base uppercase font-titleFont text-gradient-animated">Find me in</h2>
       <div className="flex gap-4">
         {findMeIn.map((item, i) => (
-          <motion.span
+          <motion.a
             key={i}
             className="bannerIcon group"
             variants={iconVariants}
@@ -138,9 +138,11 @@ const Media: React.FC = () => (
             whileHover="hover"
             data-tooltip-id="shared-tooltip"
             data-tooltip-content={item.title}
+            href={item.link}
+            target="_blank"
           >
             <item.icon className="text-white group-hover:text-designColor transition-colors duration-300" />
-          </motion.span>
+          </motion.a>
         ))}
       </div>
     </div>
@@ -172,9 +174,9 @@ const Media: React.FC = () => (
 function getClassName(type: string) {
   switch (type) {
     case "h1":
-      return "text-4xl sm:text-5xl lgl:text-6xl font-bold text-gradient-animated";
+      return "text-2xl sm:text-3xl lgl:text-5xl font-bold text-gradient-animated";
     case "h2":
-      return "text-2xl sm:text-3xl lgl:text-4xl font-bold flex items-center text-gradient-animated";
+      return "text-xl sm:text-2xl lgl:text-3xl font-bold flex items-center text-gradient-animated";
     case "p":
       return "text-sm sm:text-base font-bodyFont leading-7 tracking-wide text-gray-300";
     case "h4":

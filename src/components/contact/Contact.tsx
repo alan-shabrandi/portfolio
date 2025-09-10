@@ -1,4 +1,3 @@
-// Contact.tsx
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import emailjs from "@emailjs/browser";
