@@ -13,17 +13,19 @@ import {
   FaTelegram,
   FaReact,
   FaNodeJs,
+  FaBriefcase,
 } from "react-icons/fa";
 import { SiProgress, SiJavascript, SiNextdotjs, SiNestjs, SiMongodb } from "react-icons/si";
-import { posterProject1, posterProject2 } from "../assets";
+import { posterProject1, posterProject2, posterProject3 } from "../assets";
 
 export const navLinksdata: NavLink[] = [
   { _id: "1001", title: "Home", link: "home", icon: FaHome },
   { _id: "1002", title: "Features", link: "features", icon: FaStar },
   { _id: "1003", title: "Projects", link: "projects", icon: FaProjectDiagram },
-  { _id: "1004", title: "Skills", link: "skills", icon: FaTools },
-  { _id: "1005", title: "Education", link: "education", icon: FaGraduationCap },
-  { _id: "1006", title: "Contact", link: "contact", icon: FaEnvelope },
+  { _id: "1004", title: "Experiences", link: "experiences", icon: FaBriefcase },
+  { _id: "1005", title: "Skills", link: "skills", icon: FaTools },
+  { _id: "1006", title: "Education", link: "education", icon: FaGraduationCap },
+  { _id: "1007", title: "Contact", link: "contact", icon: FaEnvelope },
 ];
 
 export const featuresData: Feature[] = [
@@ -119,6 +121,38 @@ export const projects: Project[] = [
     techStack: ["React", "Tailwind CSS", "Redux", "Axios", "i18next"],
     demoLinks: ["https://abrehamrahi.ir", "https://business.abrehamrahi.ir/"],
     images: [posterProject2],
+  },
+  {
+    id: 3,
+    title: "BazaryOnline Global Shopping Platform",
+    shortDes: "A cross-border e-commerce platform connecting customers in Iraq with suppliers worldwide.",
+    description:
+      "BazaryOnline is your gateway to global shopping, offering an expansive selection of products from diverse e-commerce websites. With BazaryOnline, customers in Iraq can effortlessly order from suppliers in the USA, UK, Germany, Turkey, and China. The platform aims to become the largest online shopping hub in Iraq, connecting local customers with global markets. BazaryOnline is designed to deliver convenience, variety, and reliability, making international shopping more accessible than ever before.",
+    features: [
+      "Secure JWT authentication with refresh tokens and logout management",
+      "Role-Based Access Control (RBAC) with Ownership Guard",
+      "CRUD operations for Posts and Comments with caching via Redis",
+      "Rate limiting for sensitive endpoints",
+      "Real-time notifications for Posts, Comments, and Messages using WebSockets",
+      "Clean, modular, and maintainable backend architecture",
+      "Full API documentation with Swagger",
+    ],
+    role: "Fullstack Developer",
+    company: "BazaryOnline",
+    technicalHighlights: [
+      "Backend modular design with NestJS and MongoDB schemas/models",
+      "Redis caching with TTL and LRU management for performance",
+      "Validation, error handling, and type-safe code in TypeScript",
+      "Role-based guards and ownership checks for secure CRUD operations",
+      "Frontend React components with TypeScript and React Hook Form",
+      "Protected and public UI routes with JWT-based user info injection",
+      "AppConfigService and ConfigService for environment-based settings",
+      "Real-time WebSocket notification system",
+      "Security hardening: CSP, secure cookies, lockout policies, and OWASP best practices",
+    ],
+    techStack: ["NestJS", "MongoDB", "Redis", "React", "TypeScript", "JWT", "Swagger", "WebSockets"],
+    demoLinks: ["https://bazaryonline.com"],
+    images: [posterProject3],
   },
 ];
 

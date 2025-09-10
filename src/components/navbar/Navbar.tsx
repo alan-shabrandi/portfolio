@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-scroll";
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
@@ -7,7 +7,6 @@ import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { logo } from "../../assets";
 import { navLinksdata } from "../../constants";
 import type { NavLink } from "../../utils/types";
-import type { IconType } from "react-icons";
 
 // Generic motion variants
 const fadeSlide = (axis: "x" | "y" = "x", distance = 20, delay = 0): Variants => ({
@@ -24,26 +23,6 @@ const staggerContainer: Variants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-// Single NavLink component
-const NavLinkItem: React.FC<{ title: string; link: string; icon?: IconType; onClick?: () => void; custom?: number }> = ({
-  title,
-  link,
-  icon: Icon,
-  onClick,
-  custom = 0,
-}) => (
-  <motion.li
-    className="flex items-center gap-2 text-base font-normal text-gray-400 tracking-wide cursor-pointer"
-    variants={fadeSlide("x", 20, custom * 0.1)}
-    whileHover={{ scale: 1.05, color: "var(--color-designColor)" }}
-  >
-    {Icon && <Icon className="text-designColor" />}
-    <Link to={link} spy smooth offset={-70} duration={500} onClick={onClick}>
-      {title}
-    </Link>
-  </motion.li>
-);
-
 // Social icons
 const socialIcons = [
   { Icon: FaFacebookF, color: "#1877F2" },
@@ -51,84 +30,133 @@ const socialIcons = [
   { Icon: FaLinkedinIn, color: "#0A66C2" },
 ];
 
-const SocialLinks: React.FC = () => (
-  <div className="flex gap-4">
-    {socialIcons.map(({ Icon, color }, i) => (
-      <motion.span key={i} className="bannerIcon" variants={fadeSlide("y", 10, i * 0.1)} whileHover={{ scale: 1.2, color }}>
-        <Icon />
-      </motion.span>
-    ))}
-  </div>
-);
+interface NavbarProps {
+  isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
+  const menuRef = useRef<HTMLDivElement>(null);
+
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMenuOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isMenuOpen]);
+
   return (
-    <header className="w-full h-18 sticky top-0 z-50 bg-bodyColor flex justify-between items-center font-titleFont border-b border-b-gray-600 px-4">
-      {/* Desktop Menu */}
-      <nav className="hidden mdl:flex justify-center items-center gap-6 lg:gap-10 w-full">
+    <header className="w-full h-20 sticky top-0 z-50 bg-[rgba(255,255,255,0.05)] backdrop-blur-xl border-b border-white/20 flex justify-between items-center font-titleFont px-6 shadow-lg">
+      <nav className="hidden mdl:flex justify-center items-center gap-8 lg:gap-12 w-full">
         {navLinksdata.map((link: NavLink, i) => (
-          <NavLinkItem key={link._id} title={link.title} link={link.link} icon={link.icon} onClick={closeMenu} custom={i} />
+          <motion.li
+            key={link._id}
+            className="flex items-center gap-2 text-base font-bold cursor-pointer px-3 py-2 rounded-lg transition-all duration-300 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 hover:scale-105 hover:brightness-125"
+            variants={fadeSlide("x", 20, i * 0.1)}
+          >
+            {link.icon && <link.icon className="text-pink-400" />}
+            <Link to={link.link} spy smooth offset={-70} duration={500}>
+              {link.title}
+            </Link>
+          </motion.li>
         ))}
       </nav>
 
-      {/* Mobile Toggle */}
-      <button onClick={toggleMenu} className="text-xl mdl:hidden bg-black w-10 h-10 flex items-center justify-center rounded-full text-designColor">
-        <FiMenu />
+      <button
+        onClick={toggleMenu}
+        className="mdl:hidden w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-purple-500 text-white shadow-lg hover:scale-110 transition-transform duration-300"
+      >
+        <FiMenu className="text-2xl" />
       </button>
 
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            {/* Overlay */}
             <motion.div
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
-              onClick={closeMenu}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
+              animate={{ opacity: 0.7 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             />
 
-            {/* Mobile Menu */}
             <motion.aside
-              className="fixed top-0 left-0 w-4/5 h-screen bg-gray-900 p-4 overflow-y-auto scrollbar-hide z-50 shadow-xl shadow-pink-600/30"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(255,0,79,0.3)" }}
-              transition={{ type: "tween", duration: 0.4 }}
+              ref={menuRef}
+              className="fixed top-0 left-0 w-4/5 h-screen bg-[rgba(0,0,0,0.6)] backdrop-blur-xl p-6 overflow-y-auto scrollbar-hide z-50 rounded-r-3xl shadow-2xl shadow-pink-500/40 border border-white/20"
+              initial={{ x: "-100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "-100%", opacity: 0 }}
+              transition={{ type: "spring", stiffness: 200, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <motion.div className="flex flex-col gap-8 py-2 relative">
-                <motion.img src={logo} alt="logo" className="w-32" variants={fadeSlide("y", 20, 0.2)} initial="hidden" animate="visible" />
-                <motion.p className="text-sm text-gray-400 mt-2" variants={fadeSlide("y", 10, 0.3)} initial="hidden" animate="visible">
+              <div className="flex flex-col gap-8 py-4 relative">
+                <motion.img
+                  src={logo}
+                  alt="logo"
+                  className="w-32 mx-auto rounded-lg shadow-md bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 animate-gradient-x"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                />
+
+                <motion.p
+                  className="text-sm text-white/70 mt-2 text-center"
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum soluta perspiciatis molestias enim cum repellat.
                 </motion.p>
 
-                <motion.ul className="flex flex-col gap-4" variants={staggerContainer} initial="hidden" animate="visible">
+                <motion.ul className="flex flex-col gap-4 mt-4" initial="hidden" animate="visible" variants={staggerContainer}>
                   {navLinksdata.map((link: NavLink, i) => (
-                    <NavLinkItem key={link._id} title={link.title} link={link.link} onClick={closeMenu} custom={i} />
+                    <motion.li
+                      key={link._id}
+                      className="flex items-center gap-2 text-base font-bold cursor-pointer px-4 py-2 rounded-lg bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 transition-all duration-300 hover:scale-105 hover:brightness-125"
+                      variants={fadeSlide("x", 20, i * 0.1)}
+                    >
+                      {link.icon && <link.icon className="text-pink-400" />}
+                      <Link to={link.link} spy smooth offset={-70} duration={500} onClick={() => setIsMenuOpen(false)}>
+                        {link.title}
+                      </Link>
+                    </motion.li>
                   ))}
                 </motion.ul>
 
-                <motion.div className="flex flex-col gap-4" variants={staggerContainer} initial="hidden" animate="visible">
-                  <motion.h2 className="text-base uppercase font-titleFont mb-4" variants={fadeSlide("y", 10, 0.5)}>
-                    Find me in
-                  </motion.h2>
-                  <SocialLinks />
+                <motion.div className="flex flex-col gap-4 mt-6 items-center" initial="hidden" animate="visible" variants={staggerContainer}>
+                  <motion.h2 className="text-base uppercase font-titleFont mb-3 text-white/70">Find me in</motion.h2>
+                  <div className="flex gap-4">
+                    {socialIcons.map(({ Icon, color }, i) => (
+                      <motion.span
+                        key={i}
+                        className="p-3 rounded-full bg-white/10 cursor-pointer transition-all duration-300"
+                        whileHover={{ scale: 1.25, backgroundColor: color, color: "#fff", boxShadow: `0 0 20px ${color}` }}
+                        variants={fadeSlide("y", 10, i * 0.1)}
+                      >
+                        <Icon />
+                      </motion.span>
+                    ))}
+                  </div>
                 </motion.div>
 
                 <motion.button
                   onClick={closeMenu}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-designColor duration-300 text-2xl"
-                  variants={fadeSlide("x", 20, 0.5)}
+                  className="absolute top-0 right-0 text-white/70 hover:text-pink-400 text-3xl"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.3 }}
                 >
                   <MdClose />
                 </motion.button>
-              </motion.div>
+              </div>
             </motion.aside>
           </>
         )}

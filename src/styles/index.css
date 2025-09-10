@@ -27,6 +27,25 @@
   }
 }
 
+@layer utilities {
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 6s ease infinite;
+  }
+}
+
 @theme {
   --breakpoint-xs: 320px;
   --breakpoint-sm: 375px;
@@ -55,4 +74,46 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.text-gradient-animated {
+  background: linear-gradient(270deg, #f472b6, #a78bfa, #3b82f6, #f472b6);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* فایل global.css یا هر جایی که استایل پروژه دارید */
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Chrome, Safari, Opera */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* Optional: just to be safe */
+}
+
+/* Firefox */
+body {
+  scrollbar-width: none; /* "auto" or "thin" are other options */
+  -ms-overflow-style: none; /* IE 10+ */
 }
