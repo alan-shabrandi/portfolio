@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-scroll";
 import { FiDownload, FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaTelegram } from "react-icons/fa";
+import { FaLinkedinIn, FaTelegram } from "react-icons/fa";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { logo } from "../../assets";
 import { navLinksdata } from "../../constants";
