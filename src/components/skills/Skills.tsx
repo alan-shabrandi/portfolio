@@ -1,4 +1,3 @@
-// Skills.tsx
 import { motion, type Variants } from "framer-motion";
 import Title from "../title/Title";
 import { FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaNodeJs, FaSass, FaGitAlt, FaLaptopCode, FaServer, FaDatabase, FaTools } from "react-icons/fa";
@@ -15,7 +14,7 @@ import {
   SiKubernetes,
   SiGithubactions,
 } from "react-icons/si";
-import { useEffect, useState, type JSX } from "react";
+import type { JSX } from "react";
 
 interface Skill {
   name: string;
@@ -89,15 +88,6 @@ const skillVariants: Variants = {
 };
 
 const Skills: React.FC = () => {
-  const [isDesktop, setIsDesktop] = useState(true);
-
-  useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <section id="skills" className="w-full py-20 border-b-[1px] border-b-black">
       <Title title="My Skills" des="Technologies I Use" />
@@ -121,10 +111,7 @@ const Skills: React.FC = () => {
                 className="flex flex-col items-center gap-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 shadow-lg cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 variants={skillVariants}
               >
-                {/* Icon with solid designColor */}
                 <div className="text-5xl text-designColor">{skill.icon}</div>
-
-                {/* Skill name with gradient text */}
                 <h3 className="text-xl font-semibold text-designColor">{skill.name}</h3>
               </motion.div>
             ))}

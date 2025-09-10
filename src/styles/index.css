@@ -1,10 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @import "tailwindcss";
-@import "swiper/css";
-@import "swiper/css/navigation";
-@import "swiper/css/pagination";
-@import "swiper/css/zoom";
+
 @layer components {
   .bannerIcon {
     @apply w-16 h-16 bg-black/25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-black/40 hover:-translate-y-1 transition-all hover:text-designColor cursor-pointer duration-300;
