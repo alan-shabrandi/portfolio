@@ -42,7 +42,7 @@ const Experiences = () => {
             title="Senior Frontend Developer"
             subTitle="Hamrah Aval + Mobin Tadbir Sharif"
             location="Tehran / Iran"
-            date="02/2022 - Present"
+            date="04/2022 - Present"
             des="Since 2022, I have been working as a Senior Frontend Developer at Hamrah Aval and Mobin Tadbir Sharif, collaborating on several joint projects. During this time, I played a key role in large-scale, high-traffic platforms, including a video streaming and sharing service similar to YouTube and Aparat, and a cloud storage solution similar to Google Drive. I have also contributed significantly to the development of various admin panels, gaining valuable experience and advanced skills."
           />
         </motion.div>
@@ -52,8 +52,8 @@ const Experiences = () => {
             title="FullStack JavaScript Developer (React + NestJS) - Remote"
             subTitle="Bazaryonline Company"
             location="Kurdistan Region of Iraq"
-            date="03/2019 - 08/2024"
-            des="As a Fullstack Developer at BazaryOnline, I contributed to building Iraq’s largest cross-border e-commerce platform, connecting local customers with global suppliers. I designed and implemented a modular backend with NestJS, MongoDB, and Redis, securing the system with JWT authentication, RBAC, and rate-limiting. On the frontend, I developed dynamic React components with TypeScript and integrated real-time WebSocket notifications. This role gave me deep experience in scalable architecture, performance optimization, and delivering reliable, secure, and user-friendly applications."
+            date="03/2020 - 01/2025"
+            des="As a Fullstack Developer at BazaryOnline, I contributed to building Iraq’s largest cross-border e-commerce platform, connecting local customers with global suppliers. I designed and implemented a modular backend with NestJS, MongoDB, PostgreSQL and Redis, securing the system with JWT authentication, RBAC, and rate-limiting. On the frontend, I developed dynamic React components with TypeScript and integrated real-time WebSocket notifications. This role gave me deep experience in scalable architecture, performance optimization, and delivering reliable, secure, and user-friendly applications."
           />
         </motion.div>
       </motion.div>

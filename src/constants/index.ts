@@ -140,7 +140,7 @@ export const projects: Project[] = [
     role: "Fullstack Developer",
     company: "BazaryOnline",
     technicalHighlights: [
-      "Backend modular design with NestJS and MongoDB schemas/models",
+      "Backend modular design with NestJS, MongoDB, PostgreSQL schemas/models",
       "Redis caching with TTL and LRU management for performance",
       "Validation, error handling, and type-safe code in TypeScript",
       "Role-based guards and ownership checks for secure CRUD operations",
@@ -150,7 +150,7 @@ export const projects: Project[] = [
       "Real-time WebSocket notification system",
       "Security hardening: CSP, secure cookies, lockout policies, and OWASP best practices",
     ],
-    techStack: ["NestJS", "MongoDB", "Redis", "React", "TypeScript", "JWT", "Swagger", "WebSockets"],
+    techStack: ["NestJS", "MongoDB", "PostgreSQL", "Redis", "React", "TypeScript", "JWT", "Swagger", "WebSockets"],
     demoLinks: ["https://bazaryonline.com"],
     images: [posterProject3],
   },
