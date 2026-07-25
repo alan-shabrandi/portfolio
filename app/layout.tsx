@@ -10,7 +10,7 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
+    default: siteConfig.title || siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    title: siteConfig.name,
+    title: siteConfig.title || siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: siteConfig.title || siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
@@ -66,10 +66,8 @@ export default function RootLayout({
       className={cn("dark scroll-smooth", geist.variable)}
       suppressHydrationWarning
     >
-      <head>
-        <JsonLd />
-      </head>
       <body className="font-sans antialiased bg-background text-foreground">
+        <JsonLd />
         {children}
       </body>
     </html>
