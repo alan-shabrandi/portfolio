@@ -64,7 +64,7 @@ export const PORTFOLIO_DATA = {
     status: "Available for new opportunities",
     resumeUrl: "/resume.pdf",
     resumeFileName: "Alan_Shabrandi_CV.pdf",
-    avatarUrl: "/profile.png",
+    avatarUrl: "/alan-shabrandi.png",
   },
   stats: [
     { value: "6+", label: "Years Experience" },

@@ -93,8 +93,8 @@ export function Hero() {
 
             <Card className="group relative h-120 w-[320px] overflow-hidden rounded-3xl border border-slate-700/50 bg-slate-900/40 p-3 backdrop-blur-sm shadow-[0_20px_80px_rgba(0,0,0,0.35)] transition-all hover:border-cyan-400/30 sm:h-130 sm:w-90">
               <Image
-                src={personal.avatarUrl || "/profile.png"}
-                alt={personal.role || "Software Engineer Profile"}
+                src={personal.avatarUrl}
+                alt={`${personal.name} - ${personal.role}`}
                 fill
                 priority
                 quality={85}
