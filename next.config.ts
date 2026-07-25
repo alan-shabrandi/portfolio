@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

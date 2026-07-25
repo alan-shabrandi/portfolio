@@ -97,7 +97,7 @@ export function Hero() {
                 alt={personal.role || "Software Engineer Profile"}
                 fill
                 priority
-                quality={100}
+                quality={85}
                 sizes="(max-width: 640px) 100vw, 720px"
                 className="rounded-2xl object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
