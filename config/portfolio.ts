@@ -229,15 +229,7 @@ export const PORTFOLIO_DATA = {
       description:
         "Building reliable APIs, services, and scalable backend platforms.",
       icon: Server,
-      skills: [
-        "Node.js",
-        "TypeScript",
-        "Go",
-        "NestJS",
-        "PostgreSQL",
-        "Redis",
-        "RabbitMQ",
-      ],
+      skills: ["Go", "PostgreSQL", "Redis", "RabbitMQ", "Python", "FastAPI"],
     },
     {
       title: "CLOUD & INFRASTRUCTURE",
@@ -260,7 +252,7 @@ export const PORTFOLIO_DATA = {
     },
   ] as TechCategory[],
   contact: {
-    labelNumber: "03",
+    labelNumber: "04",
     label: "Contact",
     availability: "Available for engineering opportunities",
     heading: "Building reliable backend systems for real-world products.",
