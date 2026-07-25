@@ -48,7 +48,7 @@ export function Hero() {
             {personal.bio}
           </p>
 
-          <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
+          {/* <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
             <Button
               size="lg"
               nativeButton={false}
@@ -68,7 +68,7 @@ export function Hero() {
             >
               {heroSection.buttons.secondary}
             </Button>
-          </div>
+          </div> */}
 
           <div className="mt-5 grid w-full grid-cols-1 gap-4 border-t border-slate-800/70 pt-6 sm:grid-cols-3 lg:max-w-xl">
             {stats.map((item) => (
