@@ -81,7 +81,10 @@ function DesktopResumeButton() {
         nativeButton={false}
         className="rounded-xl border-slate-700/60 bg-transparent px-5 text-sm font-semibold text-slate-200 transition-all hover:border-cyan-400/30 hover:bg-white/5 hover:text-white"
         render={
-          <a href="/resume.pdf" download="Alan_Shabrandi_CV.pdf">
+          <a
+            href="/Alan_Shabrandi_Resume.pdf"
+            download="Alan_Shabrandi_Resume.pdf"
+          >
             Download Resume
             <Download className="ml-2 h-4 w-4" />
           </a>
@@ -133,8 +136,8 @@ function MobileNav() {
             ))}
 
             <a
-              href="/resume.pdf"
-              download="Alan_Shabrandi_CV.pdf"
+              href="/Alan_Shabrandi_Resume.pdf"
+              download="Alan_Shabrandi_Resume.pdf"
               className="mt-4 flex items-center gap-2 text-lg font-medium text-cyan-400"
             >
               Download Resume
