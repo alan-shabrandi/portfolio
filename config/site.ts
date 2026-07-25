@@ -4,6 +4,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://alan-shabrandi.com",
   description:
     "Senior Backend Developer specializing in Go, distributed systems, scalable microservices, and AI engineering.",
+  avatarImage: "https://alan-shabrandi.com/alan-shabrandi.jpg",
   ogImage: "https://alan-shabrandi.com/og.png",
   keywords: [
     "Software Engineer",

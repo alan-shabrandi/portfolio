@@ -8,7 +8,7 @@ export default function JsonLd() {
     jobTitle: "Software Engineer",
     description: siteConfig.description,
     url: siteConfig.url,
-    image: siteConfig.ogImage,
+    image: siteConfig.avatarImage,
     sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
     knowsAbout: [
       "Backend Development",

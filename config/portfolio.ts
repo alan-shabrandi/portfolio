@@ -158,6 +158,7 @@ export const PORTFOLIO_DATA = {
         "Vector Search",
         "Clean Architecture",
         "DDD",
+        "gRPC",
         "Modular Monolith",
         "React.js",
         "Redux",
@@ -190,7 +191,7 @@ export const PORTFOLIO_DATA = {
     },
     {
       period: "Aug 2018 – Mar 2020",
-      role: "Software Developer (ReactJS, NextJS)",
+      role: "Frontend Developer (ReactJS, NextJS)",
       company: "MCI (Hamrah Aval)",
       link: "https://mci.ir/",
       achievements: [
