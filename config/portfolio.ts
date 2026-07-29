@@ -39,6 +39,20 @@ export interface TechCategory {
   skills: string[];
 }
 
+export interface ProjectItem {
+  number: string;
+  category: string;
+  title: string;
+  description: string;
+  architecture: string;
+  result: string;
+  technologies: string[];
+  architectureFlow?: string;
+  vscodeMarketplaceUrl?: string;
+  sourceCodeUrl?: string;
+  fullWidth?: boolean;
+}
+
 export const PORTFOLIO_DATA = {
   heroSection: {
     badgeRole: "Software Engineer • Go Specialist",
@@ -49,7 +63,7 @@ export const PORTFOLIO_DATA = {
       highlight2: "precision.",
     },
     buttons: {
-      primary: "View Case Studies",
+      primary: "View Projects",
       secondary: "Contact",
     },
   },
@@ -74,7 +88,7 @@ export const PORTFOLIO_DATA = {
   navItems: [
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
-    // { name: "Projects", href: "#projects" },
+    { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
     { name: "Contact", href: "#contact" },
   ] as NavItem[],
@@ -218,7 +232,7 @@ export const PORTFOLIO_DATA = {
     },
   ] as ExperienceItem[],
   skillsSection: {
-    labelNumber: "03",
+    labelNumber: "04",
     label: "Engineering Toolkit",
     heading: "Technologies behind production systems.",
     description:
@@ -253,11 +267,45 @@ export const PORTFOLIO_DATA = {
     },
   ] as TechCategory[],
   contact: {
-    labelNumber: "04",
+    labelNumber: "05",
     label: "Contact",
     availability: "Available for engineering opportunities",
     heading: "Building reliable backend systems for real-world products.",
     description:
       "Open to backend engineering roles, distributed systems challenges, and opportunities to build scalable production platforms.",
   },
+  projectsSection: {
+    labelNumber: "03",
+    label: "Selected Systems",
+    heading: "Projects shaped by developer experience.",
+    description:
+      "A selection of tools and production systems focused on performance, seamless workflows, and pragmatic technical decisions.",
+  },
+  projects: [
+    {
+      number: "01",
+      category: "DEVELOPER TOOLING / AI",
+      title: "Scribe — AI-Powered Git Commit Assistant",
+      description:
+        "A developer productivity tool that analyzes staged Git diffs and generates contextual, standard commit messages using LLMs.",
+      architecture:
+        "Go CLI Core · Native Git Hook Engine · VS Code Source Control Extension",
+      architectureFlow:
+        "Git Staged Diff → SHA-256 Cache → LLM Provider (OpenAI/Claude/Gemini/Ollama) → Selected Commit",
+      result:
+        "Zero redundancy with SHA-256 diff caching · Multi-provider API architecture",
+      technologies: [
+        "Go (Golang)",
+        "TypeScript",
+        "Git Hooks",
+        "VS Code API",
+        "LLM APIs",
+        "Cobra/Survey",
+      ],
+      vscodeMarketplaceUrl:
+        "https://marketplace.visualstudio.com/items?itemName=alan-shabrandi.scribe-vscode",
+      sourceCodeUrl: "https://github.com/alan-shabrandi/scribe",
+      fullWidth: true,
+    },
+  ] as ProjectItem[],
 };
