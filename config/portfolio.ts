@@ -304,5 +304,30 @@ export const PORTFOLIO_DATA = {
       sourceCodeUrl: "https://github.com/alan-shabrandi/scribe",
       fullWidth: true,
     },
+    {
+      number: "02",
+      category: "CLOUD-NATIVE / DISTRIBUTED SYSTEMS",
+      title: "JanusGate — Cloud-Native API Gateway & Reverse Proxy",
+      description:
+        "A lightweight, high-performance API gateway and reverse proxy built in Go to manage cross-cutting microservice concerns such as routing, traffic control, and observability without adding heavy overhead.",
+      architecture:
+        "Go Concurrency Engine · Lock-Free Atomic Pointer Hot-Reload · Distributed Traffic Controller",
+      architectureFlow:
+        "Client Request → Redis Rate Limiter → Circuit Breaker & Backoff Retries → Lock-Free Atomic Router → Target Microservices (OTel / Jaeger)",
+      result:
+        "Zero-downtime configuration hot-reloads using lock-free `atomic.Pointer` · Native observability with Prometheus & OpenTelemetry",
+      technologies: [
+        "Go (Golang)",
+        "Redis",
+        "Prometheus",
+        "OpenTelemetry",
+        "Jaeger",
+        "Distributed Systems",
+        "Circuit Breaker",
+        "Reverse Proxy",
+      ],
+      sourceCodeUrl: "https://github.com/alan-shabrandi/JanusGate",
+      fullWidth: true,
+    },
   ] as ProjectItem[],
 };
