@@ -1,16 +1,22 @@
 "use client";
 
 import { motion, HTMLMotionProps } from "framer-motion";
-import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 interface MotionWrapProps extends HTMLMotionProps<"div"> {
-  children: ReactNode;
   delay?: number;
 }
 
-export function MotionWrap({ children, delay = 0, ...props }: MotionWrapProps) {
+export function MotionWrap({
+  children,
+  delay = 0,
+  className,
+  ...props
+}: MotionWrapProps) {
   return (
     <motion.div
+      {...props}
+      className={cn(className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -23,7 +29,6 @@ export function MotionWrap({ children, delay = 0, ...props }: MotionWrapProps) {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
       }}
-      {...props}
     >
       {children}
     </motion.div>
