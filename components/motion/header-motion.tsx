@@ -1,11 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { motion, HTMLMotionProps } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-export function HeaderMotion({ children }: { children: ReactNode }) {
+export function HeaderMotion({
+  children,
+  className,
+  ...props
+}: HTMLMotionProps<"header">) {
   return (
-    <motion.div
+    <motion.header
+      {...props}
+      className={cn(className)}
       initial={{
         opacity: 0,
         y: -20,
@@ -20,6 +26,6 @@ export function HeaderMotion({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </motion.div>
+    </motion.header>
   );
 }
