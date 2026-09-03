@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sheet";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/utils";
-import { useScroll } from "@/hooks/useScroll";
+import { useScroll } from "@/hooks/use-scroll";
 import { Logo } from "./logo";
 import { PORTFOLIO_DATA } from "@/config/portfolio";
 
