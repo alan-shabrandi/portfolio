@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
@@ -52,7 +51,7 @@ export function Hero() {
             <Button
               size="lg"
               nativeButton={false}
-              render={<Link href="#projects" />}
+              render={<a href="#projects" />}
               className="rounded-xl bg-cyan-400 px-8 font-semibold text-slate-950 transition-all hover:bg-cyan-300 hover:shadow-lg hover:shadow-cyan-400/20"
             >
               {heroSection.buttons.primary}
@@ -63,7 +62,7 @@ export function Hero() {
               size="lg"
               variant="ghost"
               nativeButton={false}
-              render={<Link href="#contact" />}
+              render={<a href="#contact" />}
               className="rounded-xl px-8 text-slate-300 hover:bg-white/5 hover:text-white"
             >
               {heroSection.buttons.secondary}
@@ -98,7 +97,7 @@ export function Hero() {
                 fill
                 priority
                 quality={85}
-                sizes="(max-width: 640px) 100vw, 720px"
+                sizes="(max-width: 640px) 100vw, 400px"
                 className="rounded-2xl object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
 
