@@ -19,9 +19,11 @@ import { useScroll } from "@/hooks/use-scroll";
 import { Logo } from "./logo";
 import { PORTFOLIO_DATA } from "@/config/portfolio";
 
-const navItems = PORTFOLIO_DATA.navItems;
-
+const { navItems, personal } = PORTFOLIO_DATA;
 const SECTION_IDS = navItems.map((item) => item.href.replace("#", ""));
+
+const RESUME_URL = personal.resumeUrl;
+const USER_NAME = personal.name;
 
 export function Header() {
   const scrolled = useScroll(20);
@@ -61,7 +63,7 @@ function DesktopNav({ activeSection }: { activeSection: string }) {
             className={cn(
               "rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-200",
               isActive
-                ? "bg-white/5 text-white border border-white/10"
+                ? "border border-white/10 bg-white/5 text-white"
                 : "text-slate-500 hover:text-white",
             )}
           >
@@ -81,10 +83,7 @@ function DesktopResumeButton() {
         nativeButton={false}
         className="rounded-xl border-slate-700/60 bg-transparent px-5 text-sm font-semibold text-slate-200 transition-all hover:border-cyan-400/30 hover:bg-white/5 hover:text-white"
         render={
-          <a
-            href="/Alan_Shabrandi_Resume.pdf"
-            download="Alan_Shabrandi_Resume.pdf"
-          >
+          <a href={RESUME_URL} download>
             Download Resume
             <Download className="ml-2 h-4 w-4" />
           </a>
@@ -119,7 +118,7 @@ function MobileNav() {
         >
           <SheetHeader>
             <SheetTitle className="text-left text-lg font-semibold text-white">
-              Alan Shabrandi
+              {USER_NAME}
             </SheetTitle>
           </SheetHeader>
 
@@ -136,8 +135,8 @@ function MobileNav() {
             ))}
 
             <a
-              href="/Alan_Shabrandi_Resume.pdf"
-              download="Alan_Shabrandi_Resume.pdf"
+              href={RESUME_URL}
+              download
               className="mt-4 flex items-center gap-2 text-lg font-medium text-cyan-400"
             >
               Download Resume

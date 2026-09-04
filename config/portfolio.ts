@@ -76,8 +76,7 @@ export const PORTFOLIO_DATA = {
     bio: "Full-stack engineer with a strong focus on backend architecture, systems engineering, and modern frontend interfaces. Passionate about clean code, high performance, and AI-driven solutions.",
     location: "Remote / Netherlands",
     status: "Available for new opportunities",
-    resumeUrl: "/resume.pdf",
-    resumeFileName: "Alan_Shabrandi_CV.pdf",
+    resumeUrl: "/Alan_Shabrandi_Resume.pdf",
     avatarUrl: "/alan-shabrandi.png",
   },
   stats: [
