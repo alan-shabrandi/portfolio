@@ -1,10 +1,11 @@
+// src/components/common/section-header.tsx
 import { MotionWrap } from "@/components/motion/motion-wrap";
 
 interface SectionHeaderProps {
-  labelNumber: string;
+  labelNumber?: string;
   label: string;
   heading: string;
-  description: string;
+  description?: string;
 }
 
 export function SectionHeader({
@@ -16,7 +17,7 @@ export function SectionHeader({
   return (
     <MotionWrap delay={0.1} className="mb-14 flex flex-col gap-4">
       <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-400">
-        <span className="text-slate-600">{labelNumber}</span>
+        {labelNumber && <span className="text-slate-600">{labelNumber}</span>}
         {label}
       </div>
 
@@ -24,9 +25,11 @@ export function SectionHeader({
         {heading}
       </h2>
 
-      <p className="max-w-175 text-base leading-relaxed text-slate-400 md:text-lg">
-        {description}
-      </p>
+      {description && (
+        <p className="max-w-175 text-base leading-relaxed text-slate-400 md:text-lg">
+          {description}
+        </p>
+      )}
     </MotionWrap>
   );
 }
