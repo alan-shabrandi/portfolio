@@ -5,7 +5,7 @@ import { Experience } from "@/components/sections/experience";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/layout/footer";
 import { Skills } from "@/components/sections/skills";
-import { Projects } from "@/components/sections/projects";
+import { Projects } from "@/components/sections/projects/projects";
 
 export default function Home() {
   return (
