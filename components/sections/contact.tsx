@@ -2,6 +2,7 @@ import { Mail, ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { PORTFOLIO_DATA } from "@/config/portfolio";
 import { MotionWrap } from "@/components/motion/motion-wrap";
+import { SectionHeader } from "@/components/common/section-header";
 
 const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -21,12 +22,6 @@ interface ContactButtonProps {
   label: string;
 }
 
-interface ContactButtonProps {
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-}
-
 const ContactButton = ({ href, icon: Icon, label }: ContactButtonProps) => {
   return (
     <a
@@ -35,9 +30,9 @@ const ContactButton = ({ href, icon: Icon, label }: ContactButtonProps) => {
       rel="noopener noreferrer"
       className="inline-flex items-center gap-2 rounded-xl border border-slate-700/60 bg-slate-800/40 px-4 py-2.5 text-sm font-semibold text-slate-200 transition-all hover:border-cyan-500/40 hover:text-cyan-300"
     >
-      <Icon className="w-4 h-4" />
+      <Icon className="h-4 w-4" />
       {label}
-      <ArrowUpRight className="w-3.5 h-3.5" />
+      <ArrowUpRight className="h-3.5 w-3.5" />
     </a>
   );
 };
@@ -68,40 +63,36 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 border-t border-slate-800/60 overflow-hidden scroll-mt-24"
+      className="scroll-mt-24 overflow-hidden border-t border-slate-800/60 py-24"
     >
       <MotionWrap delay={0.1}>
-        <div className="group relative overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-900/40 backdrop-blur-sm p-8 md:p-12 transition-all duration-500 hover:border-cyan-500/30">
-          <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 via-transparent to-transparent opacity-60 pointer-events-none" />
+        <div className="group relative overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-900/40 p-8 backdrop-blur-sm transition-all duration-500 hover:border-cyan-500/30 md:p-12">
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-cyan-500/10 via-transparent to-transparent opacity-60" />
 
-          <div className="relative flex flex-col gap-8 max-w-212.5">
-            <div className="flex items-center gap-3 text-xs font-semibold tracking-[0.25em] uppercase text-cyan-400">
-              <span className="text-slate-600">{contact.labelNumber}</span>
-              {contact.label}
-            </div>
+          <div className="relative flex max-w-212.5 flex-col">
+            <SectionHeader
+              labelNumber={contact.labelNumber}
+              label={contact.label}
+              heading={contact.heading}
+              description={contact.description}
+            />
 
-            <div className="inline-flex items-center gap-2 w-fit rounded-full border border-slate-700/60 bg-slate-800/40 px-3 py-1.5 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-cyan-400" />
-              {contact.availability}
-            </div>
+            <div className="mt-8 flex flex-col gap-6 md:mt-2">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-700/60 bg-slate-800/40 px-3 py-1.5 text-xs text-slate-300">
+                <span className="h-2 w-2 rounded-full bg-cyan-400" />
+                {contact.availability}
+              </div>
 
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-tight text-slate-100">
-              {contact.heading}
-            </h2>
-
-            <p className="max-w-175 text-base md:text-lg leading-relaxed text-slate-400">
-              {contact.description}
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              {links.map((link) => (
-                <ContactButton
-                  key={link.label}
-                  href={link.href}
-                  icon={link.icon}
-                  label={link.label}
-                />
-              ))}
+              <div className="flex flex-wrap items-center gap-4">
+                {links.map((link) => (
+                  <ContactButton
+                    key={link.label}
+                    href={link.href}
+                    icon={link.icon}
+                    label={link.label}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
