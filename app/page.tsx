@@ -1,7 +1,7 @@
 import { Header } from "@/components/layout/header";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
-import { Experience } from "@/components/sections/experience";
+import { Experience } from "@/components/sections/experience/experience";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/layout/footer";
 import { Skills } from "@/components/sections/skills/skills";

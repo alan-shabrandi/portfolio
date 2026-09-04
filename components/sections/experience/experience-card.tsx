@@ -1,14 +1,12 @@
 "use client";
-
-import { useState } from "react";
-import { Server, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
-import { MotionWrap } from "@/components/motion/motion-wrap";
 import { Card } from "@/components/ui/card";
 import { PORTFOLIO_DATA } from "@/config/portfolio";
+import { ChevronDown, ChevronUp, Server, TrendingUp } from "lucide-react";
+import { useState } from "react";
 
 type ExperienceItem = (typeof PORTFOLIO_DATA.experiences)[0];
 
-function ExperienceCard({ item }: { item: ExperienceItem }) {
+export function ExperienceCard({ item }: { item: ExperienceItem }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { cardLabel, ui } = PORTFOLIO_DATA.experienceSection;
 
@@ -91,49 +89,5 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
         </div>
       </div>
     </Card>
-  );
-}
-
-export function Experience() {
-  const { experienceSection, experiences } = PORTFOLIO_DATA;
-
-  return (
-    <section
-      id="experience"
-      className="scroll-mt-24 border-b border-slate-800/60 px-4 py-24 md:px-8"
-    >
-      <div className="mx-auto max-w-6xl">
-        <MotionWrap delay={0.1}>
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-400">
-              <span className="text-slate-600">
-                {experienceSection.labelNumber}
-              </span>
-              {experienceSection.label}
-            </div>
-            <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-100 md:text-5xl">
-              {experienceSection.heading}
-            </h2>
-            <p className="max-w-175 text-base leading-relaxed text-slate-400 md:text-lg">
-              {experienceSection.description}
-            </p>
-          </div>
-        </MotionWrap>
-
-        <div className="relative mt-14 space-y-10 before:absolute before:left-1.75 before:top-4 before:h-[calc(100%-32px)] before:w-px before:bg-slate-800">
-          {experiences.map((item, index) => (
-            <MotionWrap
-              key={item.company + item.role}
-              delay={0.2 + index * 0.12}
-            >
-              <div className="relative pl-8">
-                <span className="absolute left-0 top-8 h-3 w-3 rounded-full border-2 border-slate-950 bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
-                <ExperienceCard item={item} />
-              </div>
-            </MotionWrap>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
