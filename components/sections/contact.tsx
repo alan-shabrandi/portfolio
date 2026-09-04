@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Mail, ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { PORTFOLIO_DATA } from "@/config/portfolio";
@@ -22,33 +21,24 @@ interface ContactButtonProps {
   label: string;
 }
 
+interface ContactButtonProps {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+}
+
 const ContactButton = ({ href, icon: Icon, label }: ContactButtonProps) => {
-  const isEmail = href.startsWith("mailto:");
-
-  if (isEmail) {
-    return (
-      <a
-        href={href}
-        className="inline-flex items-center gap-2 rounded-xl border border-slate-700/60 bg-slate-800/40 px-4 py-2.5 text-sm font-semibold text-slate-200 transition-all hover:border-cyan-500/40 hover:text-cyan-300"
-      >
-        <Icon className="w-4 h-4" />
-        {label}
-        <ArrowUpRight className="w-3.5 h-3.5" />
-      </a>
-    );
-  }
-
   return (
-    <Link
+    <a
       href={href}
       target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       className="inline-flex items-center gap-2 rounded-xl border border-slate-700/60 bg-slate-800/40 px-4 py-2.5 text-sm font-semibold text-slate-200 transition-all hover:border-cyan-500/40 hover:text-cyan-300"
     >
       <Icon className="w-4 h-4" />
       {label}
       <ArrowUpRight className="w-3.5 h-3.5" />
-    </Link>
+    </a>
   );
 };
 
