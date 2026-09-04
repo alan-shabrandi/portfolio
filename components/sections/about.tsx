@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { MotionWrap } from "@/components/motion/motion-wrap";
+import { SectionHeader } from "@/components/common/section-header";
 import { PORTFOLIO_DATA } from "@/config/portfolio";
 
 export function About() {
@@ -15,22 +16,19 @@ export function About() {
         className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16"
       >
         <div className="flex flex-col gap-6 lg:col-span-7">
-          <div className="flex items-center gap-3 text-xs font-semibold tracking-[0.25em] uppercase text-cyan-400">
-            <span className="text-slate-600">{about.labelNumber}</span>
-            {about.label}
-          </div>
-
-          <h2 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-slate-100 md:text-5xl">
-            {about.heading}
-          </h2>
-
-          <p className="max-w-xl text-base leading-relaxed text-slate-400 md:text-lg">
-            {about.description}
-          </p>
+          <SectionHeader
+            labelNumber={about.labelNumber}
+            label={about.label}
+            heading={about.heading}
+            description={about.description}
+          />
 
           <div className="mt-2 grid gap-4">
-            {about.principles.map((principle, index) => (
-              <div key={index} className="border-l border-cyan-400/40 pl-4">
+            {about.principles.map((principle) => (
+              <div
+                key={principle.title}
+                className="border-l border-cyan-400/40 pl-4"
+              >
                 <h3 className="text-sm font-semibold text-slate-200">
                   {principle.title}
                 </h3>
@@ -46,7 +44,7 @@ export function About() {
           <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
           <div className="relative flex flex-col gap-6">
-            <h3 className="text-sm font-semibold tracking-[0.15em] uppercase text-slate-200">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-200">
               {about.focusLabel}
             </h3>
 
