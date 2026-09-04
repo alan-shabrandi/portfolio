@@ -36,7 +36,7 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
             <a
               href={item.link}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="text-sm text-slate-400 transition-colors hover:text-cyan-400"
             >
               {item.company}
@@ -49,8 +49,8 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
 
         <div className="flex flex-col gap-3">
           <ul className="flex flex-col gap-3">
-            {displayedAchievements.map((achievement, idx) => (
-              <li key={idx} className="flex items-start gap-3">
+            {displayedAchievements.map((achievement) => (
+              <li key={achievement} className="flex items-start gap-3">
                 <TrendingUp className="mt-1 h-4 w-4 shrink-0 text-cyan-500/60" />
                 <p className="text-sm leading-relaxed text-slate-400 md:text-base">
                   {achievement}
@@ -122,7 +122,10 @@ export function Experience() {
 
         <div className="relative mt-14 space-y-10 before:absolute before:left-1.75 before:top-4 before:h-[calc(100%-32px)] before:w-px before:bg-slate-800">
           {experiences.map((item, index) => (
-            <MotionWrap key={item.period} delay={0.2 + index * 0.12}>
+            <MotionWrap
+              key={item.company + item.role}
+              delay={0.2 + index * 0.12}
+            >
               <div className="relative pl-8">
                 <span className="absolute left-0 top-8 h-3 w-3 rounded-full border-2 border-slate-950 bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
                 <ExperienceCard item={item} />
