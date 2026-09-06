@@ -1,6 +1,12 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "alan-shabrandi-portfolio",
+  "description": "Personal portfolio and resume website for Alan Shabrandi, a Senior Backend Engineer specializing in Go and distributed systems.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alan-shabrandi/portfolio.git"
+  },
+  "homepage": "https://alanshabrandi.vercel.app",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
